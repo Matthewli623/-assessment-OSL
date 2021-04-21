@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
-public interface PricingRule {
-    public Double apply(Hashtable< Gadget , Integer>  cart);
+
+abstract class PricingRule {
+    abstract void apply(Hashtable<String, ArrayList<Gadget>> cart);
 }

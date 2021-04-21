@@ -1,37 +1,46 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Set;
 
+public class Checkout {
 
-public class Checkout  {
-    
     private ArrayList<PricingRule> pricingRules;
 
-    private Hashtable< Gadget , Integer> cart ;
+    private Hashtable<String, ArrayList<Gadget>> cart;
 
-    private Double total ;
+    private Double total;
 
-    public Checkout(ArrayList<PricingRule> pricingRules){
+    public Checkout(ArrayList<PricingRule> pricingRules) {
         this.pricingRules = pricingRules;
         this.cart = new Hashtable();
-        this.total = 0 ;
+        this.total = 0.0;
     }
 
-    public void scan(Gadget gadget){
-        if(cart.contains(gadget)){
-            cart.put(gadget,cart.get(gadget)+1);
-        }
-        else{
-            Integer quantity = 1;
-            cart.put(gadget, quantity);
+    public void scan(Gadget gadget) {
+        String name = gadget.getName();
+        if (cart.containsKey(name)) {
+            cart.get(name).add(gadget);
+        } else {
+            ArrayList<Gadget> gadgets = new ArrayList<>();
+            gadgets.add(gadget);
+            cart.put(name, gadgets);
         }
     }
 
-    public String total(){
-
-        for (PricingRule rule: pricingRules){
-            
+    public String total() {
+        //Apply each rule to all item in cart
+        for (PricingRule rule : pricingRules) {
+            rule.apply(cart);
         }
-        return  String.format("%.2f", total);
+
+        Set<String> names = cart.keySet();
+        //Sum all price of all gadget
+        for(String name: names){
+            for (Gadget gadget: cart.get(name)){
+                total += gadget.getPrice();
+            }
+        }
+        return String.format("%.2f", total);
     }
 
 }

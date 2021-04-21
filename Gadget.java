@@ -12,6 +12,10 @@ public class Gadget  {
         this.price = price;
     }
 
+    public void applyDiscount(Double newPrice){
+        this.price = newPrice;
+    }
+
 
     public String getSku() {
         return this.sku;
