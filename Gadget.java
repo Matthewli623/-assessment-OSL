@@ -1,21 +1,20 @@
-public class Gadget  {
+public class Gadget {
 
-    private String sku ; 
+    private String sku;
 
     private String name;
 
-    private Double price ;
+    private Double price;
 
-    public Gadget(String sku , String name , Double price){
+    public Gadget(String sku, String name, Double price) {
         this.sku = sku;
         this.name = name;
         this.price = price;
     }
 
-    public void applyDiscount(Double newPrice){
+    public void applyDiscount(Double newPrice) {
         this.price = newPrice;
     }
-
 
     public String getSku() {
         return this.sku;

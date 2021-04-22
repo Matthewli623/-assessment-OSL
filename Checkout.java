@@ -28,15 +28,15 @@ public class Checkout {
     }
 
     public String total() {
-        //Apply each rule to all item in cart
+        // Apply each rule to all item in cart
         for (PricingRule rule : pricingRules) {
             rule.apply(cart);
         }
 
         Set<String> names = cart.keySet();
-        //Sum all price of all gadget
-        for(String name: names){
-            for (Gadget gadget: cart.get(name)){
+        // Sum all price of all gadget
+        for (String name : names) {
+            for (Gadget gadget : cart.get(name)) {
                 total += gadget.getPrice();
             }
         }
