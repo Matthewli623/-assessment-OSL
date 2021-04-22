@@ -5,9 +5,9 @@ public class Store {
     public static void main(String args[]) {
         while (true) {
             Scanner keyboard = new Scanner(System.in);
-            System.out.println("SKUs Scanned:");
+            System.out.println("SKUs Scanned : ");
             String input = keyboard.nextLine();
-            if (input.equalsIgnoreCase("")) {
+            if (input.trim().equalsIgnoreCase("exit")) {
                 break;
             }
 
@@ -22,7 +22,7 @@ public class Store {
             for (String SKU : SKUs) {
                 co.scan(factory.getGadget(SKU.trim()));
             }
-            System.out.println("Total expected:" + co.total());
+            System.out.println("Total expected : " + co.total());
         }
     }
 }

@@ -1,9 +1,6 @@
 public class GadgetFactory {
 
     public Gadget getGadget(String SKU) {
-        if (SKU == null) {
-            return null;
-        }
         if (SKU.equalsIgnoreCase("ipd")) {
             return new Gadget("ipd", "Super iPad", 549.99);
         } else if (SKU.equalsIgnoreCase("mbp")) {
@@ -13,6 +10,6 @@ public class GadgetFactory {
         } else if (SKU.equalsIgnoreCase("vga")) {
             return new Gadget("vga", "VGA adapter", 30.0);
         }
-        return null;
+        throw new java.lang.Error("This SKU is not exit");
     }
 }
